@@ -30,7 +30,7 @@ public class ProductService {
         Product savedProduct = productRepository.save(product);
         return ProductMapper.toDto(savedProduct);
     }
-    
+
 
     // Get a product by ID
     public ProductDto getProductById(Long id) {

@@ -3,6 +3,7 @@ package com.random.Spri.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.Set;
@@ -30,8 +31,10 @@ public class User {
     @ColumnDefault("'default@email.com'")
     private String email;
 
-    @ManyToMany(mappedBy = "users")
-    private Set<Product> products;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
 
     public User(){
 
